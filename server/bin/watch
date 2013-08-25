@@ -1,14 +1,14 @@
 #!/usr/bin/env node
 var cp = require('child_process');
-var fs = require('fs');
+var watch = require('node-watch');
 
 var serverExe = 'python -m SimpleHTTPServer';
-var targetFile = './lib/--compile.js';
+var watchTarget = './lib/';
 
 var server = cp.exec(serverExe);
 console.log('Server started');
 
-fs.watchFile(targetFile, function (event, filename) {
+watch(watchTarget, function (event, filename) {
   server.kill();
   console.log('Server stopped');
   server = cp.exec('python -m SimpleHTTPServer');
@@ -17,7 +17,6 @@ fs.watchFile(targetFile, function (event, filename) {
 
 process.on('SIGINT', function () {
   server.kill();
-  fs.unwatchFile(targetFile);
   console.log('\nServer stopped')
   process.exit();
 });

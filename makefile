@@ -3,6 +3,7 @@ install:
 	git submodule init
 	# bmpimage repo requires perms?
 	git submodule update vendor/jDataView vendor/jParser vendor/js_bintrees vendor/restruct.js/
+	npm install
 
 server:
 	python -m SimpleHTTPServer
