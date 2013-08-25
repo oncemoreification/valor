@@ -11,6 +11,11 @@ Subspace-alike game written in CoffeeScript/HTML5.
 * [ASSS](http://asss.minegoboom.com/)
 * [Continuum](http://www.getcontinuum.com/)
 
+## Developing
+Clone submodules and dependencies with `make install`.
+Compile the coffee scripts with `make coffee`, watch for changes with `make watch_coffee`.
+Serve the game locally with `make server`, watch for changes with `make watch_server`.
+
 ## Contributing
 
 * Fork the project.
