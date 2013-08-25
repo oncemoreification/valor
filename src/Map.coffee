@@ -1,13 +1,11 @@
 class Map
   constructor: (oEvent) ->
     [@tileset, @tiles] = @parseLevel(oEvent)
-    # @tree = zOrderTree(@tiles)
     @spriteWidth = @spriteHeight = 16 # in pixels
     @spriteMapWidth = 19 # in tiles
     @spriteMapHeight = 10 # in tiles
     @mapWidth = @mapHeight = 1024 # in tiles
     @mapWidthP = @mapHeightP = 1024 * @spriteWidth # in pixels
-    # @drawtiles = (tile for tile in @tiles when Math.abs(tile.x - 524) <= 1000 && Math.abs(tile.y - 628) <= 1000)
 
   tilesInView: (viewport, ship) ->
     west = ship.x - viewport.width / 2
@@ -34,8 +32,6 @@ class Map
     vpmxp = tile.x - origin.x - 8
     vpmyp = tile.y - origin.y - 8
 
-    # debugger if tile.index < 190
-
     args = [
       @tileset,
       smxp, smyp,
@@ -44,8 +40,6 @@ class Map
       @spriteWidth, @spriteHeight
     ]
     info = {smxp: smxp, smyp: smyp, vpmxp: vpmxp, vpmyp: vpmyp, tile: tile.index, x: tile.x, y: tile.y}
-    # console.log(info)
-    # console.log(info) if 0 <= vpmyp <= viewport.width && 0 <= vpmyp <= viewport.height
 
     ctx.drawImage(args...)
     info
@@ -61,17 +55,11 @@ class Map
 
     a = new Uint8Array(arrayBuffer)
 
-    # if(a[0] == 66 && a[1] == 77){
     bmp_size = bmpLength.unpack(a.subarray(2, 6)).length
     bmp_data = a.subarray(0, bmp_size)
     canvas = document.createElement("canvas")
     canvas.name = "tileset"
-    ctx = canvas.getContext('2d')
-    ctx.drawImage(mapStruct, 20, 20)  # WTF
-    # canvas.style.position = "absolute"
-    # canvas.style.zIndex = 100
-    # canvas.style.top = 0
-    # document.body.appendChild canvas
+    # TODO: load bitmap images
     i = bmp_size
 
     while i < a.length

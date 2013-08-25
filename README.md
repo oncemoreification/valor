@@ -13,8 +13,8 @@ Subspace-alike game written in CoffeeScript/HTML5.
 
 ## Developing
 Clone submodules and dependencies with `make install`.
-Compile the coffee scripts with `make coffee`, watch for changes with `make watch_coffee`.
-Serve the game locally with `make server`, watch for changes with `make watch_server`.
+Compile the coffee scripts with `make coffee`, and watch for changes with `make watch_coffee`.
+Serve the game locally with `make server`. You can watch for changes with `make watch_server`, but you really don't need to.
 
 ## Contributing
 
