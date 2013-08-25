@@ -1,0 +1,23 @@
+#!/usr/bin/env node
+var cp = require('child_process');
+var fs = require('fs');
+
+var serverExe = 'python -m SimpleHTTPServer';
+var targetFile = './lib/--compile.js';
+
+var server = cp.exec(serverExe);
+console.log('Server started');
+
+fs.watchFile(targetFile, function (event, filename) {
+  server.kill();
+  console.log('Server stopped');
+  server = cp.exec('python -m SimpleHTTPServer');
+  console.log('Server started');
+});
+
+process.on('SIGINT', function () {
+  server.kill();
+  fs.unwatchFile(targetFile);
+  console.log('\nServer stopped')
+  process.exit();
+});
