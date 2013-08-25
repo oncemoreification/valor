@@ -4,3 +4,6 @@ server:
 watch:
 #	coffee --watch --map --bare --compile --output lib/ src/
 	coffee --watch --bare --compile --output lib/ src/
+
+coffee:
+	coffee --compile --output lib/ src/
