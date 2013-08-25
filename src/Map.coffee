@@ -60,14 +60,14 @@ class Map
     tiles = []
 
     a = new Uint8Array(arrayBuffer)
-    
+
     # if(a[0] == 66 && a[1] == 77){
     bmp_size = bmpLength.unpack(a.subarray(2, 6)).length
     bmp_data = a.subarray(0, bmp_size)
-    bmp = new BMPImage(bmp_data.buffer)
+    # bmp = new BMPImage(bmp_data.buffer)
     canvas = document.createElement("canvas")
     canvas.name = "tileset"
-    bmp.drawToCanvas canvas
+    # bmp.drawToCanvas canvas
     # canvas.style.position = "absolute"
     # canvas.style.zIndex = 100
     # canvas.style.top = 0
